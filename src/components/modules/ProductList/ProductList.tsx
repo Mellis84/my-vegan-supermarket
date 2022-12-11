@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import styles from './ProductList.module.scss';
 
 import { Product } from 'types/interfaces/product.interfaces';
-import { ProductContextType } from 'types/cart.type';
+import { ProductContextType } from 'types/products.type';
 import { ProductsContext } from 'contexts/productsContext';
 
 import ProductItem from 'components/modules/ProductItem';

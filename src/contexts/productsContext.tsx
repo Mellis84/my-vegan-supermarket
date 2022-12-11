@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { ProductContextType } from 'types/cart.type';
+import { ProductContextType } from '~/types/products.type';
 import { initialData } from 'data';
 
 const { products } = initialData;
@@ -12,7 +12,11 @@ const initialState = { products: storage };
 
 export const ProductsContext = createContext<ProductContextType | null>(null);
 
-const CartContextProvider = ({ children }: { children: React.ReactNode }) => {
+const ProductsContextProvider = ({
+  children
+}: {
+  children: React.ReactNode;
+}) => {
   const [products] = useState(initialState);
 
   return (
@@ -22,4 +26,4 @@ const CartContextProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default CartContextProvider;
+export default ProductsContextProvider;

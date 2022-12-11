@@ -1,0 +1,47 @@
+@import 'styles/settings/__settings';
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem 3rem 0;
+    width: 100%;
+
+    p {
+        margin: 0;
+    }
+}
+
+.logo {
+    font-size: 2rem;
+
+    span {
+        font-weight: 900;
+        color: $c-green;
+    }
+}
+
+.shoppingBag {
+    position: relative;
+    flex: 0 0 auto;
+    height: 3rem;
+    margin-left: 0.5rem;
+
+    i {
+        position: absolute;
+        top: 0;
+        right: -8px;
+        height: 17px;
+        width: 17px;
+        font-size: 10px;
+        font-weight: 800;
+        text-align: center;
+        border-radius: 50%;
+        color: $c-white;
+        background-color: $c-red;
+    }
+
+    img {
+        height: 100%;
+    }
+}

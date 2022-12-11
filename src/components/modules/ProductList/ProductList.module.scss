@@ -1,0 +1,19 @@
+@import 'styles/settings/__settings';
+
+.productList {
+    h2 {
+        margin-bottom: 2rem;
+    }
+}
+
+.products {
+    display: grid;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 30px;
+    padding: 2rem 0;
+
+    @media(min-width:$bp-mobile) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

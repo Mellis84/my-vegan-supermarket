@@ -1,0 +1,36 @@
+@import 'styles/settings/__settings';
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    color: $c-brown;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.6rem;
+    padding: 10px 13px;
+    border-radius: 5px;
+    border: 1px solid rgba($c-brown, 0.25);
+    transform: scale(1);
+    will-change: transform;
+    transition: background 100ms ease, transform 150ms ease;
+
+    &:active {
+        transform: scale(0.9);
+    }
+
+    svg {
+        fill: $c-brown;
+        width: 13px;
+        margin-left: 10px;
+    }
+
+    &.outline {
+        &:hover {
+            background-color: rgba($c-brown, 0.05);
+        }
+
+        &:active {
+            background-color: rgba($c-brown, 0.1);
+        }
+    }
+}

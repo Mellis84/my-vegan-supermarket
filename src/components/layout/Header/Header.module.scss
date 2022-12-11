@@ -20,28 +20,3 @@
         color: $c-green;
     }
 }
-
-.shoppingBag {
-    position: relative;
-    flex: 0 0 auto;
-    height: 3rem;
-    margin-left: 0.5rem;
-
-    i {
-        position: absolute;
-        top: 0;
-        right: -8px;
-        height: 17px;
-        width: 17px;
-        font-size: 10px;
-        font-weight: 800;
-        text-align: center;
-        border-radius: 50%;
-        color: $c-white;
-        background-color: $c-red;
-    }
-
-    img {
-        height: 100%;
-    }
-}

@@ -1,5 +1,6 @@
 import styles from './Header.module.scss';
-import shoppingBag from 'images/shopping-bag.svg';
+
+import ShoppingBag from 'components/elements/ShoppingBag';
 
 const Header = () => {
   return (
@@ -10,10 +11,7 @@ const Header = () => {
         </b>
       </a>
 
-      <div className={styles.shoppingBag}>
-        <i>1</i>
-        <img src={shoppingBag} alt="Shopping bag" />
-      </div>
+      <ShoppingBag />
     </header>
   );
 };

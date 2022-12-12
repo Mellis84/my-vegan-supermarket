@@ -33,4 +33,21 @@
             background-color: rgba($c-brown, 0.1);
         }
     }
+
+    &.solid {
+        color: $c-white;
+        background-color: $c-brown;
+
+        svg {
+            fill: $c-white;
+        }        
+
+        &:hover {
+            background-color: darken($c-brown, 30);
+        }
+
+        &:active {
+            background-color: darken($c-brown, 50);
+        }
+    }
 }

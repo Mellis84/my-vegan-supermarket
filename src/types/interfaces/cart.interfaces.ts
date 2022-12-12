@@ -8,7 +8,9 @@ import { Product } from 'types/interfaces/product.interfaces';
 
 export enum CartActionType {
   ADD_ITEM = 'ADD_ITEM',
-  REMOVE_ITEM = 'REMOVE_ITEM'
+  REMOVE_ITEM = 'REMOVE_ITEM',
+  INCREASE_QTY = 'INCREASE_QTY',
+  DECREASE_QTY = 'DECREASE_QTY',
 }
 
 // Cart ------------------------------------------------------------------ //

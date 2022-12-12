@@ -13,7 +13,9 @@ type Props = {
 };
 
 const ProductItem: React.FC<Props> = ({ product }) => {
-  const { addProduct, cartItems } = useContext(CartContext) as CartContextType;
+  const { addProduct, increaseQty, cartItems } = useContext(
+    CartContext
+  ) as CartContextType;
 
   return (
     <div className={styles.productItem}>
@@ -49,7 +51,14 @@ const ProductItem: React.FC<Props> = ({ product }) => {
           </Button>
         )}
 
-        {isInCart(product, cartItems) && <p>added</p>}
+        {isInCart(product, cartItems) && (
+          <Button buttonStyle="solid" onClick={() => increaseQty(product)}>
+            Add more{' '}
+            <svg viewBox="0 0 1000 1000">
+              <path d="M990,500c0,56.3-45.6,101.9-101.9,101.9H601.9v286.2c0,56.3-45.6,101.9-101.9,101.9c-56.3,0-101.9-45.6-101.9-101.9V601.9H111.9C55.6,601.9,10,556.3,10,500c0-56.3,45.6-101.9,101.9-101.9h286.2V111.9C398.1,55.6,443.7,10,500,10c56.3,0,101.9,45.6,101.9,101.9v286.2h286.2C944.4,398.1,990,443.7,990,500z" />
+            </svg>
+          </Button>
+        )}
 
         <div className={styles.productPrice}>
           <span>£{product.price.toFixed(2)}</span>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import styles from './ShoppingBag.module.scss';
 
 import { CartContext } from 'contexts/cartContext';

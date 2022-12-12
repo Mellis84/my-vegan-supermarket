@@ -1,7 +1,6 @@
 export const initialData = {
   products: [
     {
-      id: 1,
       name: 'Apple',
       sku: 'A',
       stock: 10,
@@ -13,7 +12,6 @@ export const initialData = {
         'Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.'
     },
     {
-      id: 2,
       name: 'Blueberries',
       sku: 'B',
       stock: 20,
@@ -25,7 +23,6 @@ export const initialData = {
         'Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.'
     },
     {
-      id: 3,
       name: 'Cadbury Plant Bar Vegan Chocolate Bar',
       sku: 'C',
       stock: 15,
@@ -37,7 +34,6 @@ export const initialData = {
         'Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.'
     },
     {
-      id: 4,
       name: 'Duchy Organic Avocado',
       sku: 'D',
       stock: 5,

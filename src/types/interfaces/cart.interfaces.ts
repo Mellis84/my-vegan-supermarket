@@ -6,9 +6,9 @@ import { Product } from 'types/interfaces/product.interfaces';
 
 // Enums ------------------------------------------------------------------ //
 
-enum CartActionType {
-  ADD = 'ADD',
-  REMOVE = 'REMOVE'
+export enum CartActionType {
+  ADD_ITEM = 'ADD_ITEM',
+  REMOVE_ITEM = 'REMOVE_ITEM'
 }
 
 // Cart ------------------------------------------------------------------ //
@@ -23,5 +23,5 @@ export interface Cart {
 
 export interface CartAction {
   type: CartActionType;
-  payload: number;
+  payload: Product;
 }

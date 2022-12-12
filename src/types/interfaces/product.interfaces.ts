@@ -3,7 +3,6 @@
  */
 
 export interface Product {
-  id: number;
   name: string;
   sku: string;
   stock: number;
@@ -11,4 +10,5 @@ export interface Product {
   weight: string;
   image: string;
   description: string;
+  qty: number;
 }

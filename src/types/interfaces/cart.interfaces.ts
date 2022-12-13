@@ -11,6 +11,7 @@ export enum CartActionType {
   REMOVE_ITEM = 'REMOVE_ITEM',
   INCREASE_QTY = 'INCREASE_QTY',
   DECREASE_QTY = 'DECREASE_QTY',
+  CLEAR_ITEMS = 'CLEAR_ITEMS'
 }
 
 // Cart ------------------------------------------------------------------ //
@@ -22,8 +23,7 @@ export interface Cart {
 }
 
 // Cart Action ------------------------------------------------------------------ //
-
 export interface CartAction {
   type: CartActionType;
-  payload: Product;
+  payload?: Product;
 }

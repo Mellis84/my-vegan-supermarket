@@ -1,0 +1,10 @@
+@import 'styles/settings/__settings';
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+
+    @media(min-width:$bp-tablet) {
+        flex-direction: row;
+    }
+}

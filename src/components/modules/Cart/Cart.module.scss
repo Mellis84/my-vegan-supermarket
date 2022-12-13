@@ -1,3 +1,86 @@
 @import 'styles/settings/__settings';
 
-.cart {}
+.cart {
+    display: flex;
+    flex-direction: column;
+    flex: none;
+    padding: 2rem 0;
+
+    @media(min-width:$bp-tablet) {
+        margin-left: 3rem;
+        width: 40rem;
+    }
+}
+
+.cartWrapper {
+    position: sticky;
+    top: 25px;
+    display: flex;
+    flex-direction: column;
+    background-color: $c-white;
+    border-radius: 3rem;
+    padding: 3rem;
+    margin-top: 14px;
+
+    h4 {
+        margin-bottom: 1rem;
+    }
+
+    h6 {
+        font-style: italic;
+        color: $c-grey;
+    }
+
+    .cartItemList {
+        overflow: auto;
+        max-height: 50rem;
+        padding: 2rem 2rem 2rem 0;
+    }
+}
+
+.cartFooter {
+    margin-top: auto;
+
+    .cartTotals {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 0;
+
+        span {
+            display: flex;
+            justify-content: space-between;
+
+            &:not(:last-child) {
+                margin-bottom: 1rem;
+            }
+
+            &:last-child {
+                font-weight: 700;
+            }
+        }
+    }
+
+    .cartButtonGroup {
+        display: flex;
+
+        button {
+            font-size: 1.8rem;
+            width: 100%;
+
+            &:first-child {
+                &:hover {
+                    color: $c-white;
+                    background-color: $c-red;
+                }
+
+                &:active {
+                    background-color: darken($c-red, 10);
+                }
+            }
+
+            +button {
+                margin-left: 1.5rem;
+            }
+        }
+    }
+}

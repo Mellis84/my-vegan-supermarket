@@ -11,7 +11,7 @@ const ShoppingBag = () => {
 
   return (
     <div className={styles.shoppingBag}>
-      {itemCount > 0 ? <i className={styles.cartCount}>{itemCount}</i> : null}
+      {itemCount > 0 && <i className={styles.cartCount}>{itemCount}</i>}
 
       <img src={shoppingBag} alt="Shopping bag" />
     </div>

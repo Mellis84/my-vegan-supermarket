@@ -19,14 +19,29 @@ const CartContextProvider = ({ children }: { children: React.ReactNode }) => {
     dispatch({ type: CartActionType.ADD_ITEM, payload });
   };
 
+  const removeProduct = (payload: Product) => {
+    dispatch({ type: CartActionType.REMOVE_ITEM, payload });
+  };
+
   const increaseQty = (payload: Product) => {
     dispatch({ type: CartActionType.INCREASE_QTY, payload });
+  };
+
+  const decreaseQty = (payload: Product) => {
+    dispatch({ type: CartActionType.DECREASE_QTY, payload });
+  };
+
+  const clearCart = () => {
+    dispatch({ type: CartActionType.CLEAR_ITEMS });
   };
 
   const contextValues = {
     ...state,
     addProduct,
-    increaseQty
+    removeProduct,
+    increaseQty,
+    decreaseQty,
+    clearCart
   };
 
   return (

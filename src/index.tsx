@@ -1,23 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import 'styles/globals.scss';
+import { store } from './store/store';
+import { Provider } from 'react-redux';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import ProductContextProvider from 'contexts/productsContext';
-import CartContextProvider from 'contexts/cartContext';
+import 'styles/globals.scss';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  // <React.StrictMode>
-  <ProductContextProvider>
-    <CartContextProvider>
+  <React.StrictMode>
+    <Provider store={store}>
       <App />
-    </CartContextProvider>
-  </ProductContextProvider>
-  // </React.StrictMode>
+    </Provider>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

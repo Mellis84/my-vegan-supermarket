@@ -1,34 +1,25 @@
-import { useContext } from 'react';
 import styles from './CartItem.module.scss';
 
-import { Product } from 'types/interfaces/product.interfaces';
+import { CartProduct } from 'types/interfaces/product.interfaces';
 
 import Button from 'components/elements/Button';
 
 type Props = {
-  product: Product;
-  increaseQty: (product: Product) => void;
-  decreaseQty: (product: Product) => void;
-  removeProduct: (product: Product) => void;
+  product: CartProduct;
 };
 
-const CartItem: React.FC<Props> = ({
-  product,
-  increaseQty,
-  decreaseQty,
-  removeProduct
-}) => {
+const CartItem: React.FC<Props> = ({ product }) => {
   return (
     <div className={styles.cartItem}>
       <div className={styles.cartItemOptions}>
         <div className={styles.cartItemImage}>
-          {product.qty >= 2 && <span>{product.qty}</span>}
+          {product.qty && product.qty >= 2 && <span>{product?.qty}</span>}
 
           <img src={product.image} alt={product.name} />
         </div>
 
         <div className={styles.cartItemControls}>
-          <Button buttonStyle="outline" onClick={() => decreaseQty(product)}>
+          <Button buttonStyle="outline">
             <svg
               viewBox="0 0 60.4 60.4"
               aria-controls="Decrease qty"
@@ -41,7 +32,7 @@ const CartItem: React.FC<Props> = ({
             </svg>
           </Button>
 
-          <Button buttonStyle="outline" onClick={() => increaseQty(product)}>
+          <Button buttonStyle="outline">
             <svg
               viewBox="0 0 1000 1000"
               aria-controls="Increase qty"
@@ -57,9 +48,7 @@ const CartItem: React.FC<Props> = ({
         <h5>{product.name}</h5>
 
         <div className={styles.cartItemPrice}>
-          <button type="button" onClick={() => removeProduct(product)}>
-            Remove
-          </button>
+          <button type="button">Remove</button>
 
           <span>£{product.price.toFixed(2)}</span>
         </div>

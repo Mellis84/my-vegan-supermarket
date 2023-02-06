@@ -1,17 +1,15 @@
-import { useContext } from 'react';
-import styles from './ShoppingBag.module.scss';
-
-import { CartContext } from 'contexts/cartContext';
-import { CartContextType } from 'types/cart.type';
-
+import { useAppSelector } from 'hooks';
+import { getItemCount } from 'store/cartSlice';
 import shoppingBag from 'images/shopping-bag.svg';
 
+import styles from './ShoppingBag.module.scss';
+
 const ShoppingBag = () => {
-  const { itemCount } = useContext(CartContext) as CartContextType;
+  const itemCount = useAppSelector(getItemCount);
 
   return (
     <div className={styles.shoppingBag}>
-      {itemCount > 0 && <i className={styles.cartCount}>{itemCount}</i>}
+      <i className={styles.cartCount}>{itemCount}</i>
 
       <img src={shoppingBag} alt="Shopping bag" />
     </div>

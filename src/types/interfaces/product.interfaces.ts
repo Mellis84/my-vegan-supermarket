@@ -12,3 +12,11 @@ export interface Product {
   description: string;
   qty: number;
 }
+
+export interface CartProduct {
+  name: string;
+  sku: string;
+  price: number;
+  image: string;
+  qty?: number;
+}

@@ -1,28 +1,22 @@
-import { useContext } from 'react';
-
-import styles from './ProductList.module.scss';
+import { useAppSelector } from '../../../hooks';
 
 import { Product } from 'types/interfaces/product.interfaces';
-import { ProductContextType } from 'types/products.type';
-import { ProductsContext } from 'contexts/productsContext';
 
 import ProductItem from 'components/modules/ProductItem';
 
+import styles from './ProductList.module.scss';
+
 const ProductList = () => {
-  const { products } = useContext(ProductsContext) as ProductContextType;
+  const products = useAppSelector((state) => state.products.products);
 
   return (
     <section className={styles.productList}>
       <h2>Products</h2>
 
       <div className={styles.products}>
-        {products && products.length ? (
-          products.map((product: Product) => (
-            <ProductItem key={product.sku} product={product} />
-          ))
-        ) : (
-          <p>No Products</p>
-        )}
+        {products?.map((product: Product) => (
+          <ProductItem key={product.sku} product={product} />
+        ))}
       </div>
     </section>
   );

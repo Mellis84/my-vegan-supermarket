@@ -4,17 +4,27 @@ import {
   createAsyncThunk
 } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-
-import type { RootState, AppDispatch } from './store';
+import { checkout } from 'api';
+import type { RootState } from './store';
 import type { CartProduct } from 'types/interfaces/product.interfaces';
 import type { CartState } from 'types/cart.type';
 
 const initialState: CartState = {
   cartItems: [],
   checkoutState: 'READY',
+  errorMessage: '',
   itemCount: 0,
   total: 0
 };
+
+export const checkoutCart = createAsyncThunk(
+  'cart/checkout',
+  async (items: CartProduct[]) => {
+    const response = await checkout(items);
+
+    return response;
+  }
+);
 
 export const cartSlice = createSlice({
   name: 'cart',
@@ -62,24 +72,28 @@ export const cartSlice = createSlice({
     }
   },
   extraReducers: function (builder) {
-    builder.addCase('cart/checkout/pending', (state, action) => {
+    builder.addCase(checkoutCart.pending, (state) => {
       state.checkoutState = 'LOADING';
     });
-    builder.addCase('cart/checkout/fulfilled', (state, action) => {
+    builder.addCase(checkoutCart.fulfilled, (state) => {
       state.checkoutState = 'READY';
+    });
+    builder.addCase(checkoutCart.rejected, (state, action) => {
+      state.checkoutState = 'ERROR';
+      state.errorMessage = action.error.message || '';
     });
   }
 });
 
-export function checkout() {
-  return function checkoutThunk(dispatch: AppDispatch) {
-    dispatch({ type: 'cart/checkout/pending' });
+// export function checkout() {
+//   return function checkoutThunk(dispatch: AppDispatch) {
+//     dispatch({ type: 'cart/checkout/pending' });
 
-    setTimeout(() => {
-      dispatch({ type: 'cart/checkout/fulfilled' });
-    }, 500);
-  };
-}
+//     setTimeout(() => {
+//       dispatch({ type: 'cart/checkout/fulfilled' });
+//     }, 500);
+//   };
+// }
 
 export const {
   addProduct,

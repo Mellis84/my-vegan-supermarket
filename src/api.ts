@@ -20,9 +20,11 @@ export async function checkout(
     body: JSON.stringify(items)
   });
   const data = await response.json();
+
   if (!data.success) {
     throw new Error(data.error);
   }
+
   return data as CheckoutResponse;
 }
 

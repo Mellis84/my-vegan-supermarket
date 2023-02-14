@@ -1,6 +1,6 @@
 import { useAppSelector, useAppDispatch } from 'hooks';
 import classNames from 'classnames';
-import { getTotalPrice, checkout } from 'store/cartSlice';
+import { getTotalPrice, checkoutCart } from 'store/cartSlice';
 
 import Button from 'components/elements/Button';
 import CartItem from 'components/modules/CartItem';
@@ -8,14 +8,15 @@ import CartItem from 'components/modules/CartItem';
 import styles from './Cart.module.scss';
 
 const Cart = () => {
+  const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.cartItems);
   const totalPrice = useAppSelector(getTotalPrice);
   const checkoutState = useAppSelector((state) => state.cart.checkoutState);
-  const dispatch = useAppDispatch();
+  const errorMessage = useAppSelector((state) => state.cart.errorMessage);
 
   function onCheckout(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    dispatch(checkout());
+    dispatch(checkoutCart(cartItems));
   }
 
   const cartClasses = classNames({
@@ -50,6 +51,9 @@ const Cart = () => {
           </div>
 
           <form className={styles.cartButtonGroup} onSubmit={onCheckout}>
+            {checkoutState === 'ERROR' && errorMessage ? (
+              <p className={styles.errorBox}>{errorMessage}</p>
+            ) : null}
             <Button
               buttonStyle="outline"
               onClick={() => console.log('clear cart')}

@@ -14,6 +14,7 @@ export type CartState = {
   // clearCart: () => void;
   cartItems: CartProduct[];
   checkoutState: CheckoutState;
+  errorMessage: string;
   itemCount: number;
   total: number;
 };

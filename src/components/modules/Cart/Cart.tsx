@@ -1,4 +1,6 @@
-import { useAppSelector } from 'hooks';
+import { useAppSelector, useAppDispatch } from 'hooks';
+import classNames from 'classnames';
+import { getTotalPrice, checkout } from 'store/cartSlice';
 
 import Button from 'components/elements/Button';
 import CartItem from 'components/modules/CartItem';
@@ -7,9 +9,23 @@ import styles from './Cart.module.scss';
 
 const Cart = () => {
   const cartItems = useAppSelector((state) => state.cart.cartItems);
+  const totalPrice = useAppSelector(getTotalPrice);
+  const checkoutState = useAppSelector((state) => state.cart.checkoutState);
+  const dispatch = useAppDispatch();
+
+  function onCheckout(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    dispatch(checkout());
+  }
+
+  const cartClasses = classNames({
+    [styles.cart]: true,
+    [styles.checkoutError]: checkoutState === 'ERROR',
+    [styles.checkoutLoading]: checkoutState === 'LOADING'
+  });
 
   return (
-    <section className={styles.cart}>
+    <section className={cartClasses}>
       <div className={styles.cartWrapper}>
         <h4>Shopping Cart</h4>
 
@@ -29,11 +45,11 @@ const Cart = () => {
               Total items: <i>Item Count</i>
             </span>
             <span>
-              Total: <i>£{Number(23423).toFixed(2)}</i>
+              Total: <i>£{totalPrice}</i>
             </span>
           </div>
 
-          <div className={styles.cartButtonGroup}>
+          <form className={styles.cartButtonGroup} onSubmit={onCheckout}>
             <Button
               buttonStyle="outline"
               onClick={() => console.log('clear cart')}
@@ -41,13 +57,10 @@ const Cart = () => {
               Clear cart
             </Button>
 
-            <Button
-              buttonStyle="solid-primary"
-              onClick={() => alert(`Your total`)}
-            >
+            <Button type="submit" buttonStyle="solid-primary">
               Checkout
             </Button>
-          </div>
+          </form>
         </div>
       </div>
     </section>

@@ -1,11 +1,11 @@
 import { useAppSelector } from 'hooks';
-import { getItemCount } from 'store/cartSlice';
+import { getMemoizedItemCount } from 'store/cartSlice';
 import shoppingBag from 'images/shopping-bag.svg';
 
 import styles from './ShoppingBag.module.scss';
 
 const ShoppingBag = () => {
-  const itemCount = useAppSelector(getItemCount);
+  const itemCount = useAppSelector(getMemoizedItemCount);
 
   return (
     <div className={styles.shoppingBag}>

@@ -1,13 +1,20 @@
-import { useAppSelector } from '../../../hooks';
-
-import { Product } from 'types/interfaces/product.interfaces';
-
+import { useEffect } from 'react';
+import { useAppSelector } from 'hooks';
+import { setProducts } from 'store/productsSlice';
+import type { Product } from 'types/interfaces/product.interfaces';
+import { getProducts } from 'api';
 import ProductItem from 'components/modules/ProductItem';
 
 import styles from './ProductList.module.scss';
 
 const ProductList = () => {
   const products = useAppSelector((state) => state.products.products);
+
+  useEffect(() => {
+    getProducts().then((products) => {
+      setProducts(products);
+    });
+  }, []);
 
   return (
     <section className={styles.productList}>

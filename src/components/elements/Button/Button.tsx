@@ -5,7 +5,8 @@ import { ButtonProps } from 'types/interfaces/element.interfaces';
 const Button = ({
   buttonStyle = 'outline',
   children,
-  onClick
+  onClick,
+  type = 'button'
 }: ButtonProps) => {
   let ButtonClassName = styles.button;
 
@@ -14,7 +15,7 @@ const Button = ({
   }
 
   return (
-    <button type="button" className={ButtonClassName} onClick={onClick}>
+    <button type={type} className={ButtonClassName} onClick={onClick}>
       {children}
     </button>
   );

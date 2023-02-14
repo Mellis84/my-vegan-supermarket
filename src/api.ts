@@ -13,7 +13,7 @@ export async function checkout(
   items: CartProduct[]
 ): Promise<CheckoutResponse> {
   const modifier = items.length > 0 ? 'success' : 'error';
-  const url = `/checkout-${modifier}.json`;
+  const url = `${process.env.PUBLIC_URL}/checkout-${modifier}.json`;
   await sleep(500);
   const response = await fetch(url, {
     method: 'POST',
